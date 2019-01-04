@@ -9,4 +9,8 @@ public class Tile {
     return empty;
   }
 
+  private void fillTile() {
+    empty = false;
+  }
+
 }
