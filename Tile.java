@@ -13,4 +13,8 @@ public class Tile {
     empty = false;
   }
 
+  private void clearTile() {
+    empty = true;
+  }
+
 }
