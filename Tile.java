@@ -1,20 +1,20 @@
 public class Tile {
-  private boolean empty;
+  private boolean filled;
 
   public Tile() {
-    empty = true;
+    filled = false;
   }
 
-  private boolean isFilled() {
-    return empty;
+  public boolean isFilled() {
+    return filled;
   }
 
-  private void fillTile() {
-    empty = false;
+  public void fillTile() {
+    filled = true;
   }
 
   private void clearTile() {
-    empty = true;
+    filled = false;
   }
 
 }
