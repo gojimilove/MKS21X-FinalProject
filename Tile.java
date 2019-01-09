@@ -13,8 +13,13 @@ public class Tile {
     filled = true;
   }
 
-  private void clearTile() {
+  public void clearTile() {
     filled = false;
+  }
+  public String toString() {
+  	String s = "";
+  	s+= filled;
+  	return s;
   }
 
 }
