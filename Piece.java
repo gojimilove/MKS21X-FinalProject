@@ -15,7 +15,6 @@ public class Piece{
         piece[i][j].fillTile();
       }
     }
-    System.out.println("Length: "+length);
   }
 
   public Piece(int len) {
@@ -27,6 +26,10 @@ public class Piece{
         piece[i][j].fillTile();
       }
     }
+  }
+
+  public int length() {
+    return length;
   }
 
   public String toString() {
