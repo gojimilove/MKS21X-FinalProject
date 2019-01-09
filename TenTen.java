@@ -9,6 +9,46 @@ public class TenTen {
       score = 0;
     }
 
+    private boolean rowFilled(int row) {
+    	return false;
+    }
+
+    private boolean columnFilled(int col) {
+    	return false;
+    }
+
+    private boolean pieceFits(Piece x) {
+    	return false;
+    }
+
+    private void clearRow(int row) {
+
+    }
+
+    private void clearColumn(int col) {
+
+    }
+
+    private void clear() {
+
+    }
+
+    private void spawnPieces() {
+
+    }
+
+    private int getScore() {
+    	return score;
+    }
+
+    private void addPoints(int added) {
+    	score+= added;
+    }
+
+    private void clearPoints() {
+    	score = 0;
+    }
+
     public String toString() {
       String s = "";
       for (int i = 0; i < board.length; i++) {
