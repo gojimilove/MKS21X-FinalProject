@@ -80,10 +80,10 @@ public class TenTen {
     public String toString() {
       String s = "";
       for (int i = 0; i < board.length; i++) {
-        s+="|";
+        s+="| ";
         for (int j = 0; j < board[i].length; j++) {
-          if (board[i][j].isFilled()) s+="F";
-          else s+="-";
+          if (board[i][j].isFilled()) s+="F ";
+          else s+="- ";
         }
         s+="|\n";
       }
