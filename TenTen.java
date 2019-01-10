@@ -29,7 +29,10 @@ public class TenTen {
     }
 
     private boolean columnFilled(int col) {
-    	return false;
+      for (int i = 0; i < board.length; i++) {
+        if (!board[i][col].isFilled()) return false;
+      }
+      return true;
     }
 
     private boolean pieceFits(Piece x, int row, int col) {
@@ -102,11 +105,14 @@ public class TenTen {
     public static void main(String[] args) {
       TenTen a = new TenTen();
       a.addPiece(new Piece(9),0,0);
-      a.fillTile(0, 9);
+      a.fillTile(0,9);
+      a.fillTile(9,0);
       System.out.println(a);
       System.out.println("Pieces on board: "+a.bnunmb());
       System.out.println(""+a.rowFilled(0));
       System.out.println(""+a.rowFilled(9));
+      System.out.println(""+a.columnFilled(0));
+      System.out.println(""+a.columnFilled(9));
 
     }
 }
