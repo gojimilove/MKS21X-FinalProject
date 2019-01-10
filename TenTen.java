@@ -104,15 +104,10 @@ public class TenTen {
     }
     public static void main(String[] args) {
       TenTen a = new TenTen();
-      a.addPiece(new Piece(9),0,0);
-      a.fillTile(0,9);
-      a.fillTile(9,0);
+      a.addPiece(new Piece(2),0,0);
+      a.addPiece(new Piece(3),5,1);
+      a.addPiece(new Piece(3),8,8);
       System.out.println(a);
       System.out.println("Pieces on board: "+a.bnunmb());
-      System.out.println(""+a.rowFilled(0));
-      System.out.println(""+a.rowFilled(9));
-      System.out.println(""+a.columnFilled(0));
-      System.out.println(""+a.columnFilled(9));
-
     }
 }
