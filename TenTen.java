@@ -17,8 +17,15 @@ public class TenTen {
       count = 0;
     }
 
+    private void fillTile(int row, int col) {
+      board[row][col].fillTile();
+    }
+
     private boolean rowFilled(int row) {
-    	return false;
+    	for (int i = 0; i < board.length; i++) {
+        if (!board[row][i].isFilled()) return false;
+      }
+      return true;
     }
 
     private boolean columnFilled(int col) {
@@ -94,11 +101,12 @@ public class TenTen {
     }
     public static void main(String[] args) {
       TenTen a = new TenTen();
-      a.addPiece(new Piece(2),0,0);
-      a.addPiece(new Piece(3),5,1);
-      a.addPiece(new Piece(3),8,8);
+      a.addPiece(new Piece(9),0,0);
+      a.fillTile(0, 9);
       System.out.println(a);
       System.out.println("Pieces on board: "+a.bnunmb());
+      System.out.println(""+a.rowFilled(0));
+      System.out.println(""+a.rowFilled(9));
 
     }
 }
