@@ -11,6 +11,7 @@ public class TenTen {
         	board[i][j] = new Tile();
         }
       }
+      //pieces to be spawned
       pieces = new Piece[3];
       //start with no points, no pieces on the board
       score = 0;
@@ -22,6 +23,7 @@ public class TenTen {
     }
 
     private boolean rowFilled(int row) {
+      //checks if all tiles in the
     	for (int i = 0; i < board.length; i++) {
         if (!board[row][i].isFilled()) return false;
       }
