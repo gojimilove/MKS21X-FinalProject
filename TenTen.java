@@ -1,6 +1,6 @@
 public class TenTen {
     private Tile[][] board;
-    //private Piece[] pieces;
+    private Piece[] pieces;
     private int score, count;
 
     public TenTen() {
@@ -11,7 +11,7 @@ public class TenTen {
         	board[i][j] = new Tile();
         }
       }
-      //pieces = new Piece[3];
+      pieces = new Piece[3];
       //start with no points, no pieces on the board
       score = 0;
       count = 0;
@@ -60,6 +60,10 @@ public class TenTen {
     }
 
     private void spawnPieces() {
+      for (int i = 0; i < pieces.length; i++) {
+        pieces[i] = new Piece();
+        System.out.println(pieces[i]);
+      }
 
     }
 
@@ -108,6 +112,6 @@ public class TenTen {
       a.addPiece(new Piece(3),5,1);
       a.addPiece(new Piece(3),8,8);
       System.out.println(a);
-      System.out.println("Pieces on board: "+a.bnunmb());
+      System.out.println("Pieces on board: "+a.bnunmb()+"\n");
     }
 }
