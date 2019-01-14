@@ -35,13 +35,11 @@ public class Piece{
   public String toString() {
     String s = "";
     for (int i = 0; i < piece.length; i++) {
-      s+="|";
       for (int j = 0; j < piece[i].length; j++) {
         if (piece[i][j].isFilled()) s+="F";
         else s+="-";
-        //s+="-";
       }
-      s+="|\n";
+      s+="\n";
     }
     return s;
   }
