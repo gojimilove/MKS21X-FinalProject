@@ -172,7 +172,9 @@ public class TenTen {
 
       TenTen a = new TenTen();
       a.spawnPieces(terminal);
-      Piece help = new Piece(2);
+      Piece help1 = new Piece(1);
+      Piece help2 = new Piece(2);
+      Piece help3 = new Piece(3);
 
       while(running){
         //set up cursor
@@ -220,20 +222,20 @@ public class TenTen {
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
-            if (a.pieceFits(help, y-9,x-1)) {
-              a.addPiece(help, y-9, x-1);
+            if (a.pieceFits(help1, y-9,x-1)) {
+              a.addPiece(help1, y-9, x-1);
             }
           }
 
           if (key.getCharacter() == '2') {
-            if (a.pieceFits(help, y-9,x-1)) {
-              a.addPiece(help, y-9, x-1);
+            if (a.pieceFits(help2, y-9,x-1)) {
+              a.addPiece(help2, y-9, x-1);
             }
           }
 
           if (key.getCharacter() == '3') {
-            if (a.pieceFits(help, y-9,x-1)) {
-              a.addPiece(help, y-9, x-1);
+            if (a.pieceFits(help3, y-9,x-1)) {
+              a.addPiece(help3, y-9, x-1);
             }
           }
 
@@ -249,7 +251,7 @@ public class TenTen {
         putString(0,9,terminal,a.toString());
         putString(0,20,terminal,"Pieces:");
         putString(0,34,terminal,"Score: "+a.getScore());
-        putString(0,36,terminal,"SIDE NOTES FOR NOW: \nThe pieces that are shown below the board are not the ones being placed on the board as of now since we have not figured out to access them (xd), so 1 2 and 3 place a 2x2 piece instead.\nWe are also working on generating more complicated pieces, instead of just 1x1, 2x2, or 3x3 squares.");
+        putString(0,36,terminal,"SIDE NOTES FOR NOW: \nThe pieces that are shown below the board are not the ones being placed on the board as of now since we have not figured out to access them (xd), so 1 2 and 3 place 1x1, 2x2, and 3x3 pieces, respectively, instead.\nWe are also working on generating more complicated pieces, instead of just squares.");
       }
     }
 
