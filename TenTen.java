@@ -145,6 +145,70 @@ public class TenTen {
       return count;
     }
 
+    // public static void main(String[] args) {
+
+
+    //   int x = 2;
+    //   int y = 2;
+
+    //   Terminal terminal = TerminalFacade.createTextTerminal();
+    //   terminal.enterPrivateMode();
+
+    //   TerminalSize size = terminal.getTerminalSize();
+    //   terminal.setCursorVisible(false);
+
+    //   boolean running = true;
+
+    //   while (running) {
+    //     terminal.moveCursor(x,y);
+    //     terminal.putCharacter('\u00a4');
+    //     terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    //     terminal.applyForegroundColor(Terminal.Color.RED);
+
+    //     Key key = terminal.readInput();
+
+    //     if (key != null){
+    //       if (key.getKind() == Key.Kind.Escape) {
+    //         terminal.exitPrivateMode();
+    //         running = false;
+    //       }
+
+    //       if (key.getKind() == Key.Kind.ArrowLeft) {
+    //         terminal.moveCursor(x,y);
+    //         terminal.putCharacter(' ');
+    //         x--;
+    //       }
+
+    //       if (key.getKind() == Key.Kind.ArrowRight) {
+    //         terminal.moveCursor(x,y);
+    //         terminal.putCharacter(' ');
+    //         x++;
+    //       }
+
+    //       if (key.getKind() == Key.Kind.ArrowUp) {
+    //         terminal.moveCursor(x,y);
+    //         terminal.putCharacter(' ');
+    //         y--;
+    //       }
+
+    //       if (key.getKind() == Key.Kind.ArrowDown) {
+    //         terminal.moveCursor(x,y);
+    //         terminal.putCharacter(' ');
+    //         y++;
+    //       }
+    //     }
+    //   }
+
+    //   TenTen a = new TenTen();
+    //   // a.addPiece(new Piece(2),0,0);
+    //   // a.addPiece(new Piece(3),5,1);
+    //   // a.addPiece(new Piece(3),8,8);
+    //   // System.out.println(a);
+    //   // System.out.println("Pieces on board: "+a.bnunmb()+"\n");
+    //   putString(1,2,terminal,"Milliseconds since start of program: ");
+    //   //putString(1,2,terminal,"Pieces on board: "+a.bnunmb()+"\n");
+    // }
+
     public static void putString(int r, int c,Terminal t, String s){
       t.moveCursor(r,c);
       for(int i = 0; i < s.length();i++){
@@ -153,62 +217,73 @@ public class TenTen {
     }
 
     public static void main(String[] args) {
-      /*TenTen a = new TenTen();
+
+    int x = 0;
+    int y = 3;
+
+    Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
+    boolean running = true;
+
+    while(running){
+
+      terminal.moveCursor(x,y);
+      terminal.applyBackgroundColor(Terminal.Color.WHITE);
+      terminal.applyForegroundColor(Terminal.Color.BLACK);
+      //applySGR(a,b) for multiple modifiers (bold,blink) etc.
+      terminal.putCharacter('\u00a4');
+      //terminal.putCharacter(' ');
+      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+      terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+      terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      Key key = terminal.readInput();
+
+      if (key != null)
+      {
+
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          running = false;
+        }
+
+        if (key.getKind() == Key.Kind.ArrowLeft) {
+          terminal.moveCursor(x,y);
+          terminal.putCharacter(' ');
+          x--;
+        }
+
+        if (key.getKind() == Key.Kind.ArrowRight) {
+          terminal.moveCursor(x,y);
+          terminal.putCharacter(' ');
+          x++;
+        }
+
+        if (key.getKind() == Key.Kind.ArrowUp) {
+          terminal.moveCursor(x,y);
+          terminal.putCharacter(' ');
+          y--;
+        }
+
+        if (key.getKind() == Key.Kind.ArrowDown) {
+          terminal.moveCursor(x,y);
+          terminal.putCharacter(' ');
+          y++;
+        }
+        //putString(0,1,terminal,key+"        ");//to clear leftover letters pad withspaces
+      }
+
+      //DO EVEN WHEN NO KEY PRESSED:
+      TenTen a = new TenTen();
       a.addPiece(new Piece(2),0,0);
       a.addPiece(new Piece(3),5,1);
-      a.addPiece(new Piece(3),8,8);
-      System.out.println(a);
-      System.out.println("Pieces on board: "+a.bnunmb()+"\n");*/
-
-      int x = 2;
-      int y = 2;
-
-      Terminal terminal = TerminalFacade.createTextTerminal();
-      terminal.enterPrivateMode();
-
-      TerminalSize size = terminal.getTerminalSize();
-      terminal.setCursorVisible(false);
-
-      boolean running = true;
-
-      while (running) {
-        terminal.moveCursor(x,y);
-        terminal.putCharacter('\u00a4');
-        terminal.applyBackgroundColor(Terminal.Color.WHITE);
-        terminal.applyForegroundColor(Terminal.Color.RED);
-
-        Key key = terminal.readInput();
-
-        if (key != null){
-          if (key.getKind() == Key.Kind.Escape) {
-            terminal.exitPrivateMode();
-            running = false;
-          }
-
-          if (key.getKind() == Key.Kind.ArrowLeft) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            x--;
-          }
-
-          if (key.getKind() == Key.Kind.ArrowRight) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            x++;
-          }
-
-          if (key.getKind() == Key.Kind.ArrowUp) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            y--;
-          }
-
-          if (key.getKind() == Key.Kind.ArrowDown) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            y++;
-          }
-        }
-      }
+      putString(0,1,terminal,"Welcome to our version of TenTen!");
+      putString(0,5,terminal,a.toString());
     }
+  }
+
 }
