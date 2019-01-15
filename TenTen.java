@@ -160,8 +160,8 @@ public class TenTen {
 
     public static void main(String[] args) {
 
-      int x = 0;
-      int y = 8;
+      int x = 1;
+      int y = 9;
       //create terminal
       Terminal terminal = TerminalFacade.createTextTerminal();
       terminal.enterPrivateMode();
@@ -198,27 +198,35 @@ public class TenTen {
           }
           //moving cursor around
           if (key.getKind() == Key.Kind.ArrowLeft) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            x--;
+            if (x != 1) {
+              terminal.moveCursor(x,y);
+              terminal.putCharacter(' ');
+              x--;
+            }
           }
 
           if (key.getKind() == Key.Kind.ArrowRight) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            x++;
+            if (x != 10) {
+              terminal.moveCursor(x,y);
+              terminal.putCharacter(' ');
+              x++;
+            }
           }
 
           if (key.getKind() == Key.Kind.ArrowUp) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            y--;
+            if (y != 9) {
+              terminal.moveCursor(x,y);
+              terminal.putCharacter(' ');
+              y--;
+            }
           }
 
           if (key.getKind() == Key.Kind.ArrowDown) {
-            terminal.moveCursor(x,y);
-            terminal.putCharacter(' ');
-            y++;
+            if (y != 18) {
+              terminal.moveCursor(x,y);
+              terminal.putCharacter(' ');
+              y++;
+            }
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
@@ -246,7 +254,7 @@ public class TenTen {
         }
 
         //instructions, shows position, indicates pieces
-        putString(0,0,terminal,"Welcome to our version of TenTen!\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece.\nThen, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. \nNote: a piece is selected from its top left corner ALSO please do not go over the pieces with the cursor.");
+        putString(0,0,terminal,"Welcome to our version of TenTen!\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece.\nThen, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. \nNote: a piece is selected from its top left corner.");
         putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
         putString(0,9,terminal,a.toString());
         putString(0,20,terminal,"Pieces:");
