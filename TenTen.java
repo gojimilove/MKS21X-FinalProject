@@ -230,20 +230,20 @@ public class TenTen {
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
-            if (a.pieceFits(help1, y-9,x-1)) {
-              a.addPiece(help1, y-9, x-1);
+            if (a.pieceFits(help1, y-9, ((x/2) - 1))) {
+              a.addPiece(help1, y-9, ((x/2) - 1));
             }
           }
 
           if (key.getCharacter() == '2') {
-            if (a.pieceFits(help2, y-9,x-1)) {
-              a.addPiece(help2, y-9, x-1);
+            if (a.pieceFits(help2, y-9, ((x/2) - 1))) {
+              a.addPiece(help2, y-9, ((x/2) - 1));
             }
           }
 
           if (key.getCharacter() == '3') {
-            if (a.pieceFits(help3, y-9,x-1)) {
-              a.addPiece(help3, y-9, x-1);
+            if (a.pieceFits(help3, y-9, ((x/2) - 1))) {
+              a.addPiece(help3, y-9, ((x/2) - 1));
             }
           }
 
