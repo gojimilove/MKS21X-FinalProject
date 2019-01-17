@@ -136,10 +136,10 @@ public class TenTen {
     public String toString() {
       String s = "";
       for (int i = 0; i < board.length; i++) {
-        s+="|";
+        s+="| ";
         for (int j = 0; j < board[i].length; j++) {
-          if (board[i][j].isFilled()) s+="F";
-          else s+="-";
+          if (board[i][j].isFilled()) s+="F ";
+          else s+="- ";
         }
         s+="|\n";
       }
@@ -160,7 +160,7 @@ public class TenTen {
 
     public static void main(String[] args) {
 
-      int x = 1;
+      int x = 2;
       int y = 9;
       //create terminal
       Terminal terminal = TerminalFacade.createTextTerminal();
@@ -198,18 +198,18 @@ public class TenTen {
           }
           //moving cursor around
           if (key.getKind() == Key.Kind.ArrowLeft) {
-            if (x != 1) {
+            if (x != 2) {
               terminal.moveCursor(x,y);
               terminal.putCharacter(' ');
-              x--;
+              x-=2;
             }
           }
 
           if (key.getKind() == Key.Kind.ArrowRight) {
-            if (x != 10) {
+            if (x != 20) {
               terminal.moveCursor(x,y);
               terminal.putCharacter(' ');
-              x++;
+              x+=2;
             }
           }
 
@@ -259,7 +259,7 @@ public class TenTen {
         putString(0,9,terminal,a.toString());
         putString(0,20,terminal,"Pieces:");
         putString(0,34,terminal,"Score: "+a.getScore());
-        putString(0,36,terminal,"SIDE NOTES FOR NOW: \nThe pieces that are shown below the board are not the ones being placed on the board as of now since we have not figured out to access them (xd), so 1 2 and 3 place 1x1, 2x2, and 3x3 pieces, respectively, instead.\nWe are also working on generating more complicated pieces, instead of just squares.");
+        
       }
     }
 
