@@ -29,3 +29,11 @@ Today we worked on our tile and piece class. Tried to print out a piece to test 
 1/9/19
 Today we successfully tested adding pieces to our board, successfully generated random pieces, working on test cases for piece placement and working on new variations of pieces.  Implemented some parts of addPiece(), worked on pieceFits(), added a get method for the length of pieces. Added documentation for TenTen, Tile, and Piece classes. Added test cases for overlapping pieces and out of bounds pieces with function pieceFits().
 
+1/10/19
+Today we started working on smaller functions and implementing game mechanics, like clearing rows and columns with clearRow() and clearColumn(), added boolean rowFilled() and columnFilled() to see if row and column are entirely filled. Worked on spawnPieces() to generate pieces outside the board. We also added documentation. 
+
+1/13/19
+Started with terminal manipulation, printed board and pieces as well a instructions and side notes. Can move the cursor with the arrow keys, exit the game with escape, and place 1x1, 2x2, and 3x3 pieces with 1, 2, and 3, respectively. Points accumulate with score as the player places and clears tiles. Tiles are cleared by filling up entire rows or columns. THINGS TO WORK ON: cursor cannot move outside of the board, place the tiles that are shown below and remove them instead of the ones we’re using now, add more types of pieces, change background color of board and pieces
+
+
+
