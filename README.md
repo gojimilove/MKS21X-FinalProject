@@ -14,3 +14,18 @@ Instructions:
   This will bring you onto the board with a cursor that you can move around to place the shape you selected. 
   Hit enter to place the shape.
   Repeat this process indefinitely. 
+  
+APCS FINAL PROJECT DEVLOG
+
+1/4/19
+Today we worked on our Tile class. We wrote attributes, the constructor, and added new methods, fillTile(). We discussed how the pieces should be constructed and how to check them against the board.
+
+1/7/19
+Today we worked on our Board and discussed our piece class mechanics. We talked about how to move the pieces, how the player controls the pieces, and how to place the pieces on the board. We made our board. Added method clearTile().
+
+1/8/19
+Today we worked on our tile and piece class. Tried to print out a piece to test if it works. Made the random piece constructor, added its toString(), tested to see if it prints successfully. Printed basic squares, 1x1, 2x2, 3x3.
+
+1/9/19
+Today we successfully tested adding pieces to our board, successfully generated random pieces, working on test cases for piece placement and working on new variations of pieces.  Implemented some parts of addPiece(), worked on pieceFits(), added a get method for the length of pieces. Added documentation for TenTen, Tile, and Piece classes. Added test cases for overlapping pieces and out of bounds pieces with function pieceFits().
+
