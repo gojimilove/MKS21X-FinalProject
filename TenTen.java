@@ -138,13 +138,25 @@ public class TenTen {
       for (int i = 0; i < board.length; i++) {
         s+="| ";
         for (int j = 0; j < board[i].length; j++) {
-          if (board[i][j].isFilled()) s+="F ";
+          if (board[i][j].isFilled()) {
+            s+="F ";
+          }
           else s+="- ";
         }
         s+="|\n";
       }
       return s;
     }
+
+    // public static void putBoard(int r, int c, Terminal t, String s) {
+    //   t.moveCursor(r,c);
+    //   for(int i = 0; i < s.length();i++){
+    //     t.putCharacter(s.charAt(i));
+    //     if (s.charAt(i) == 'F') {
+    //       t.applyBackgroundColor(Terminal.Color.YELLOW);
+    //     }
+    //   }
+    // }
 
     //number of pieces player can select that are not on the board
     public int piecesWaiting(){
@@ -255,17 +267,24 @@ public class TenTen {
             }
             a.clearRow(i);
            }
-          if (a.columnFilled(i)) a.clearColumn(i);
+          if (a.columnFilled(i)) {
+            for (int j = 0; j < 10; j++) {
+              if (a.rowFilled(j)) a.clearRow(j);
+            }
+            a.clearColumn(i);
+          }
         }
 
         //instructions, shows position, indicates pieces
-        putString(0,0,terminal,"Welcome to our version of TenTen!\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece.\nThen, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. \nNote: a piece is selected from its top left corner.");
-        putString(0,8,terminal,"Current position on board: ["+(x/2 - 1)+","+(y-9)+"]     ");
-        putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
+        putString(0,0,terminal,"Welcome to our version of TenTen!");
+        putString(0,2,terminal,"Current position on board: ["+(x/2 - 1)+","+(y-9)+"]     ");
+        putString(0,3,terminal,"Current position: ["+x+","+y+"]     ");
         putString(0,9,terminal,a.toString());
+        //putBoard(0,9,terminal,a.toString());
+        //terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         putString(0,20,terminal,"Pieces:");
         putString(0,34,terminal,"Score: "+a.getScore());
-        
+
       }
     }
 
