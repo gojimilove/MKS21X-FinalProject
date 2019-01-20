@@ -94,15 +94,24 @@ public class TenTen {
     }
 
     //spawns the 3 pieces next to the board that the player can select
-    private void spawnPieces(Terminal t) {
+    // private void spawnPieces(Terminal t) {
+    //   for (int i = 0; i < pieces.length; i++) {
+    //     pieces[i] = new Piece();
+    //     if (i == 0) putString(0,22,t,pieces[i].toString());
+    //     else if (i == 1) putString(0,26,t,pieces[i].toString());
+    //     else if (i == 2) putString(0,30,t,pieces[i].toString());
+    //     //System.out.println(pieces[i]);
+    //   }
+    //   count = 3;
+    // }
+
+    private Piece[] spawnPieces() {
       for (int i = 0; i < pieces.length; i++) {
         pieces[i] = new Piece();
-        if (i == 0) putString(0,22,t,pieces[i].toString());
-        else if (i == 1) putString(0,26,t,pieces[i].toString());
-        else if (i == 2) putString(0,30,t,pieces[i].toString());
         //System.out.println(pieces[i]);
       }
       count = 3;
+      return pieces;
     }
 
     //puts the piece on the board if it fits
@@ -116,6 +125,7 @@ public class TenTen {
         }
       }
       score+=(x.length()*x.length());
+      count--;
     }
 
     //returns the current score
@@ -171,10 +181,6 @@ public class TenTen {
       boolean running = true;
 
       TenTen a = new TenTen();
-      a.spawnPieces(terminal);
-      Piece help1 = new Piece(1);
-      Piece help2 = new Piece(2);
-      Piece help3 = new Piece(3);
 
       while(running){
         //set up cursor
@@ -187,6 +193,12 @@ public class TenTen {
         //terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
         //terminal.applySGR(Terminal.SGR.RESET_ALL);
+        putString(0, 40, terminal, ""+a.piecesWaiting());
+        Piece[] selection = a.spawnPieces();
+        putString(0,22,terminal,selection[0].toString());
+        putString(0,26,terminal,selection[1].toString());
+        putString(0,30,terminal,selection[2].toString());
+        
 
         Key key = terminal.readInput();
 
@@ -230,20 +242,23 @@ public class TenTen {
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
-            if (a.pieceFits(help1, y-9, ((x/2) - 1))) {
-              a.addPiece(help1, y-9, ((x/2) - 1));
+            if (a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
+              a.addPiece(selection[0], y-9, ((x/2) - 1));
+              putString(0,22,terminal,"     \n     \n     ");
             }
           }
 
           if (key.getCharacter() == '2') {
-            if (a.pieceFits(help2, y-9, ((x/2) - 1))) {
-              a.addPiece(help2, y-9, ((x/2) - 1));
+            if (a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
+              a.addPiece(selection[1], y-9, ((x/2) - 1));
+              putString(0,26,terminal,"     \n     \n     ");
             }
           }
 
           if (key.getCharacter() == '3') {
-            if (a.pieceFits(help3, y-9, ((x/2) - 1))) {
-              a.addPiece(help3, y-9, ((x/2) - 1));
+            if (a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
+              a.addPiece(selection[2], y-9, ((x/2) - 1));
+              putString(0,30,terminal,"     \n     \n     ");
             }
           }
 
@@ -264,6 +279,7 @@ public class TenTen {
         putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
         putString(0,9,terminal,a.toString());
         putString(0,20,terminal,"Pieces:");
+        
         putString(0,34,terminal,"Score: "+a.getScore());
         
       }
