@@ -4,15 +4,8 @@ public class Piece {
 	private int id,length,width,points;
   private Tile[][] piece;
 
-  // public Piece() {
-  // 	Random rand = new Random();
-  //   int randomLength = rand.nextInt(20) + 1;
-  //   id = randomLength;
-  //   if (id == 1) piece = new int[1][2];
-  //   if (id == 2 || id == 3) piece = new int[2][2];
-  //   if ()
-  // }
-
+  //generates a piece, 2D array of Tiles (rectangle) that are filled or unfilled
+  //there are 19 different pieces, each with different length, width, and number of blocks
   public Piece() {
   	Random rand = new Random();
   	int randomID = rand.nextInt(19) + 1;
@@ -279,44 +272,27 @@ public class Piece {
     }
   }
 
+  //returns a specific Tile in the array
+  public Tile getTile(int x, int y) {
+  	return piece[x][y];
+  }
 
-
-  // public Piece() {
-  //   Random rand = new Random();
-  //   int randomLength = rand.nextInt(3) + 1;
-  //   length = randomLength;
-  //   piece = new Tile[length][length];
-  //   for (int i = 0; i < piece.length; i++) {
-  //     for (int j = 0; j < piece[i].length; j++) {
-  //     	piece[i][j] = new Tile();
-  //       piece[i][j].fillTile();
-  //     }
-  //   }
-  // }
-
-  // public Piece(int len) {
-  //   length = len;
-  //   piece = new Tile[length][length];
-  //   for (int i = 0; i < piece.length; i++) {
-  //     for (int j = 0; j < piece[i].length; j++) {
-  //       piece[i][j] = new Tile();
-  //       piece[i][j].fillTile();
-  //     }
-  //   }
-  // }
-
+  //returns the length of the piece
   public int length() {
     return length;
   }
 
+  //returns the width of the piece
   public int width() {
     return width;
   }
 
+  //the id identifies which of the 19 pieces it is, returns that
   public int id() {
     return id;
   }
 
+  //returns the number of blocks each piece takes up (number of filled tiles), or the number of points it would recieve for being placed
   public int score() {
   	return points;
   }
