@@ -33,22 +33,22 @@ Today we successfully tested adding pieces to our board, successfully generated 
 Today we started working on smaller functions and implementing game mechanics, like clearing rows and columns with clearRow() and clearColumn(), added boolean rowFilled() and columnFilled() to see if row and column are entirely filled. Worked on spawnPieces() to generate pieces outside the board. We also added documentation. 
 
 1/13/19
-Started with terminal manipulation, printed board and pieces as well a instructions and side notes. Can move the cursor with the arrow keys, exit the game with escape, and place 1x1, 2x2, and 3x3 pieces with 1, 2, and 3, respectively. Points accumulate with score as the player places and clears tiles. Tiles are cleared by filling up entire rows or columns. (most of that stuff shows up as 1/14 because the work was done after midnight). THINGS TO WORK ON: cursor cannot move outside of the board, place the tiles that are shown below and remove them instead of the ones we’re using now, add more types of pieces, change background color of board and pieces
+Today we were able to set up the board and print the board in the terminal and we have a cursor that we can move around on the board. We were able to implement all the lanterna code with a working main function. 
 
 1/14/19
-Added the lanterna file to the repo.
+Started with terminal manipulation, printed board and pieces as well a instructions and side notes. Can move the cursor with the arrow keys, exit the game with escape, and place 1x1, 2x2, and 3x3 pieces with 1, 2, and 3, respectively. Points accumulate with score as the player places and clears tiles. Tiles are cleared by filling up entire rows or columns. THINGS TO WORK ON: cursor cannot move outside of the board, place the tiles that are shown below and remove them instead of the ones we’re using now, add more types of pieces, change background color of board and pieces
 
 1/15/19
-We put restrictions on the cursor so it cannot move outside of the board.
+Today we added the feature of keeping the cursor inside the board so the player won’t break the game/ attempt to place a piece outside the board. Added lanterna file to repo. 
 
 1/16/19
-Today we added spaces to the board to make it look nicer, and adjusted the board/placing pieces on the board so that it worked with the spaces. We also updated the README so it displays instructions and the devlog.
+Today we updated our board to look nicer by adding spaces, adjusting our adding pieces because of the board change. We also added ability to clear both row and column at the same time when needed. We made several branches but didn’t push, just merged. We also updated the README so it displays instructions and the devlog.
 
 1/17/19
-We tried adding color to the pieces on the board, but it has not worked so far, so the changes on that branch have not been merged yet.
+Today we attempted to add coloration but we didn’t push the branches because it didn’t work. We discussed about rewriting some of our functions because we needed to implement new pieces.
 
 1/18/19
-Today we discussed changing the pieces so instead of being 2D arrays of Tiles, they would be arrays of coordinates, which might make it easier to move them around the board (before placing, so the player can see what it would look like) and color them too.
+Today we tried to get the pieces to have color but that didn’t work out again, we discussed revamping our piece class to make it easier for placement and coloration, and also to be able to generate different pieces, as we only have 1x1, 2x2, 3x3 pieces so far. We discussed changing the pieces so instead of being 2D arrays of Tiles, they would be arrays of coordinates, which might make it easier to move them around the board (before placing, so the player can see what it would look like) and color them too.
 
 1/20/19
 Made it so 1 2 and 3 correspond to the pieces that are printed on the board rather than just a 1x1, 2x2, or 3x3 piece.
