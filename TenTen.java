@@ -62,7 +62,7 @@ public class TenTen {
       //if a space on board where we're trying to put the piece is already filled, return false
       for (int i=0; i < x.length();i++){
         for(int j=0; j < x.width();j++){
-          if (board[row+i][col+j].isFilled()) return false;
+          if (x.getTile(i,j).isFilled() && board[row+i][col+j].isFilled()) return false;
         }
       }
     	return true;
@@ -120,7 +120,7 @@ public class TenTen {
       if (pieceFits(x, row, col)) {
         for (int i=0; i < x.length();i++){
           for(int j=0; j < x.width();j++){
-            board[row+i][col+j].fillTile();
+            if (x.getTile(i,j).isFilled()) board[row+i][col+j].fillTile();
           }
         }
       }
@@ -258,7 +258,7 @@ public class TenTen {
           if (key.getCharacter() == '1') {
             if (pieceOneUsed == false && a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
               a.addPiece(selection[0], y-9, ((x/2) - 1));
-              putString(0,22,terminal,"     \n     \n     \n     \n     ");
+              putString(0,22,terminal,"          \n          \n          \n          \n          ");
               pieceOneUsed = true;
             }
           }
@@ -266,7 +266,7 @@ public class TenTen {
           if (key.getCharacter() == '2') {
             if (pieceTwoUsed == false && a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
               a.addPiece(selection[1], y-9, ((x/2) - 1));
-              putString(0,28,terminal,"     \n     \n     \n     \n     ");
+              putString(0,28,terminal,"          \n          \n          \n          \n          ");
               pieceTwoUsed = true;
             }
           }
@@ -274,7 +274,7 @@ public class TenTen {
           if (key.getCharacter() == '3') {
             if (pieceThreeUsed == false && a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
               a.addPiece(selection[2], y-9, ((x/2) - 1));
-              putString(0,34,terminal,"     \n     \n     \n     \n     ");
+              putString(0,34,terminal,"          \n          \n          \n          \n          ");
               pieceThreeUsed = true;
             }
           }
