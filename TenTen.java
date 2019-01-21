@@ -68,6 +68,15 @@ public class TenTen {
     	return true;
     }
 
+    private boolean pieceFitsBoard(Piece x) {
+      for (int i = 0; i < 11 - x.length(); i++) {
+        for (int j = 0; j < 11 - x.width(); j++) {
+          if (pieceFits(x, i, j)) return true;
+        }
+      }
+      return false;
+    }
+
     //clearing a row when entirely filled
     private void clearRow(int row) {
 			for (int i = 0; i < board[row].length; i++) {
@@ -94,16 +103,6 @@ public class TenTen {
     }
 
     //spawns the 3 pieces next to the board that the player can select
-    // private void spawnPieces(Terminal t) {
-    //   for (int i = 0; i < pieces.length; i++) {
-    //     pieces[i] = new Piece();
-    //     if (i == 0) putString(0,22,t,pieces[i].toString());
-    //     else if (i == 1) putString(0,26,t,pieces[i].toString());
-    //     else if (i == 2) putString(0,30,t,pieces[i].toString());
-    //     //System.out.println(pieces[i]);
-    //   }
-    //   count = 3;
-    // }
 
     private Piece[] spawnPieces() {
       for (int i = 0; i < pieces.length; i++) {
@@ -141,6 +140,11 @@ public class TenTen {
     //resets the score
     private void clearPoints() {
     	score = 0;
+    }    
+
+    //number of pieces player can select that are not on the board
+    private int piecesWaiting(){
+      return count;
     }
 
     public String toString() {
@@ -156,11 +160,6 @@ public class TenTen {
       return s;
     }
 
-    //number of pieces player can select that are not on the board
-    public int piecesWaiting(){
-      return count;
-    }
-
     public static void putString(int r, int c,Terminal t, String s){
       t.moveCursor(r,c);
       for(int i = 0; i < s.length();i++){
@@ -171,7 +170,7 @@ public class TenTen {
     public static void main(String[] args) {
 
       int x = 2;
-      int y = 9;
+      int y = 1;
       //create terminal
       Terminal terminal = TerminalFacade.createTextTerminal();
       terminal.enterPrivateMode();
@@ -179,12 +178,13 @@ public class TenTen {
       TerminalSize size = terminal.getTerminalSize();
       terminal.setCursorVisible(false);
       boolean running = true;
+      int mode = 0;
 
       TenTen a = new TenTen();
       Piece[] selection = a.spawnPieces();
-      putString(0,22,terminal,selection[0].toString());
-      putString(0,28,terminal,selection[1].toString());
-      putString(0,34,terminal,selection[2].toString());
+      putString(0,14,terminal,selection[0].toString());
+      putString(0,20,terminal,selection[1].toString());
+      putString(0,26,terminal,selection[2].toString());
 
       boolean pieceOneUsed = false;
       boolean pieceTwoUsed = false;
@@ -200,19 +200,7 @@ public class TenTen {
         //terminal.putCharacter(' ');
         //terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-        //terminal.applySGR(Terminal.SGR.RESET_ALL);
-        //putString(0, 40, terminal, ""+a.piecesWaiting());
-        if (a.piecesWaiting() == 0) {
-          selection = a.spawnPieces();
-          putString(0,22,terminal,selection[0].toString());
-          putString(0,28,terminal,selection[1].toString());
-          putString(0,34,terminal,selection[2].toString());
-          pieceOneUsed = false;
-          pieceTwoUsed = false;
-          pieceThreeUsed = false;
-        }
-        
-        
+        //terminal.applySGR(Terminal.SGR.RESET_ALL);        
 
         Key key = terminal.readInput();
 
@@ -240,7 +228,7 @@ public class TenTen {
           }
 
           if (key.getKind() == Key.Kind.ArrowUp) {
-            if (y != 9) {
+            if (y != 1) {
               terminal.moveCursor(x,y);
               terminal.putCharacter(' ');
               y--;
@@ -248,7 +236,7 @@ public class TenTen {
           }
 
           if (key.getKind() == Key.Kind.ArrowDown) {
-            if (y != 18) {
+            if (y != 10) {
               terminal.moveCursor(x,y);
               terminal.putCharacter(' ');
               y++;
@@ -256,25 +244,25 @@ public class TenTen {
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
-            if (pieceOneUsed == false && a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
-              a.addPiece(selection[0], y-9, ((x/2) - 1));
-              putString(0,22,terminal,"          \n          \n          \n          \n          ");
+            if (pieceOneUsed == false && a.pieceFits(selection[0], y-1, ((x/2) - 1))) {
+              a.addPiece(selection[0], y-1, ((x/2) - 1));
+              putString(0,14,terminal,"          \n          \n          \n          \n          ");
               pieceOneUsed = true;
             }
           }
 
           if (key.getCharacter() == '2') {
-            if (pieceTwoUsed == false && a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
-              a.addPiece(selection[1], y-9, ((x/2) - 1));
-              putString(0,28,terminal,"          \n          \n          \n          \n          ");
+            if (pieceTwoUsed == false && a.pieceFits(selection[1], y-1, ((x/2) - 1))) {
+              a.addPiece(selection[1], y-1, ((x/2) - 1));
+              putString(0,20,terminal,"          \n          \n          \n          \n          ");
               pieceTwoUsed = true;
             }
           }
 
           if (key.getCharacter() == '3') {
-            if (pieceThreeUsed == false && a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
-              a.addPiece(selection[2], y-9, ((x/2) - 1));
-              putString(0,34,terminal,"          \n          \n          \n          \n          ");
+            if (pieceThreeUsed == false && a.pieceFits(selection[2], y-1, ((x/2) - 1))) {
+              a.addPiece(selection[2], y-1, ((x/2) - 1));
+              putString(0,26,terminal,"          \n          \n          \n          \n          ");
               pieceThreeUsed = true;
             }
           }
@@ -290,15 +278,95 @@ public class TenTen {
           if (a.columnFilled(i)) a.clearColumn(i);
         }
 
+        if (a.piecesWaiting() == 0) {
+          selection = a.spawnPieces();
+          putString(0,14,terminal,selection[0].toString());
+          putString(0,20,terminal,selection[1].toString());
+          putString(0,26,terminal,selection[2].toString());
+          pieceOneUsed = false;
+          pieceTwoUsed = false;
+          pieceThreeUsed = false;
+        }
+
         //instructions, shows position, indicates pieces
-        putString(0,0,terminal,"Welcome to our version of TenTen!\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece.\nThen, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. \nNote: a piece is selected from its top left corner.");
-        putString(0,8,terminal,"Current position on board: ["+(x/2 - 1)+","+(y-9)+"]     ");
-        putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
-        putString(0,9,terminal,a.toString());
-        putString(0,20,terminal,"Pieces:");
-        
-        putString(0,40,terminal,"Score: "+a.getScore());
-        
+        putString(0,0,terminal,"WELCOME TO TENTEN!");
+        putString(0,1,terminal,a.toString());
+        //putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
+        //putString(0,8,terminal,"Current position on board: ["+(x/2 - 1)+","+(y-1)+"]     ");
+        putString(0,12,terminal,"PIECES:");
+        putString(0,32,terminal,"SCORE: "+a.getScore());
+        putString(0,34,terminal,"INSTRUCTIONS:\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece. Then, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. YOU LOSE IF there is no more room on the board for any of the pieces displayed below. GOOD LUCK!!\n\n***Note: a piece is selected from its top left corner.");
+
+        //if all 3 are waiting AND they all dont fit
+        if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) && 
+            !pieceTwoUsed && !a.pieceFitsBoard(selection[1]) && 
+            !pieceThreeUsed && !a.pieceFitsBoard(selection[2])) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 1 and 2 are waiting AND both dont fit
+        if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) &&
+            !pieceTwoUsed && !a.pieceFitsBoard(selection[1]) &&
+            pieceThreeUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 1 and 3 waiting AND both dont fit
+        if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) &&
+            !pieceThreeUsed && !a.pieceFitsBoard(selection[2]) &&
+            pieceTwoUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 2 and 3 waiting AND both dont fit
+        if (!pieceTwoUsed && !a.pieceFitsBoard(selection[1]) &&
+            !pieceThreeUsed && !a.pieceFitsBoard(selection[2]) &&
+            pieceOneUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 1 is waiting AND it doesnt fit
+        if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) &&
+            pieceTwoUsed &&
+            pieceThreeUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 2 is waiting AND it doesnt fit
+        if (!pieceTwoUsed && !a.pieceFitsBoard(selection[1]) &&
+            pieceOneUsed &&
+            pieceThreeUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
+        //if just 3 is waiting AND it doesnt fit
+        if (!pieceThreeUsed && !a.pieceFitsBoard(selection[2]) &&
+            pieceOneUsed &&
+            pieceThreeUsed) {
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("you lost lmao");
+          //putString(0,45,terminal,"NONE OF THE PIECES FIT");
+        }
+
       }
     }
 
