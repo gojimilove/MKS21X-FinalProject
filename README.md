@@ -33,7 +33,22 @@ Today we successfully tested adding pieces to our board, successfully generated 
 Today we started working on smaller functions and implementing game mechanics, like clearing rows and columns with clearRow() and clearColumn(), added boolean rowFilled() and columnFilled() to see if row and column are entirely filled. Worked on spawnPieces() to generate pieces outside the board. We also added documentation. 
 
 1/13/19
-Started with terminal manipulation, printed board and pieces as well a instructions and side notes. Can move the cursor with the arrow keys, exit the game with escape, and place 1x1, 2x2, and 3x3 pieces with 1, 2, and 3, respectively. Points accumulate with score as the player places and clears tiles. Tiles are cleared by filling up entire rows or columns. THINGS TO WORK ON: cursor cannot move outside of the board, place the tiles that are shown below and remove them instead of the ones we’re using now, add more types of pieces, change background color of board and pieces
+Started with terminal manipulation, printed board and pieces as well a instructions and side notes. Can move the cursor with the arrow keys, exit the game with escape, and place 1x1, 2x2, and 3x3 pieces with 1, 2, and 3, respectively. Points accumulate with score as the player places and clears tiles. Tiles are cleared by filling up entire rows or columns. (most of that stuff shows up as 1/14 because the work was done after midnight). THINGS TO WORK ON: cursor cannot move outside of the board, place the tiles that are shown below and remove them instead of the ones we’re using now, add more types of pieces, change background color of board and pieces
 
+1/14/19
+Added the lanterna file to the repo.
 
+1/15/19
+We put restrictions on the cursor so it cannot move outside of the board.
 
+1/16/19
+Today we added spaces to the board to make it look nicer, and adjusted the board/placing pieces on the board so that it worked with the spaces. We also updated the README so it displays instructions and the devlog.
+
+1/17/19
+We tried adding color to the pieces on the board, but it has not worked so far, so the changes on that branch have not been merged yet.
+
+1/18/19
+Today we discussed changing the pieces so instead of being 2D arrays of Tiles, they would be arrays of coordinates, which might make it easier to move them around the board (before placing, so the player can see what it would look like) and color them too.
+
+1/20/19
+Made it so 1 2 and 3 correspond to the pieces that are printed on the board rather than just a 1x1, 2x2, or 3x3 piece.
