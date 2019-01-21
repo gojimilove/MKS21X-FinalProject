@@ -168,6 +168,18 @@ public class TenTen {
       }
     }
 
+    public static void putString(int r, int c,Terminal t, String s, Terminal.Color back ){
+      t.moveCursor(r,c);
+      t.applyBackgroundColor(back);
+      t.applyForegroundColor(Terminal.Color.BLACK);
+      for(int i = 0; i < s.length();i++){
+        //t.moveCursor(piece[i][0],piece[i][1]);
+        t.putCharacter(s.charAt(i));
+      }
+      t.applyBackgroundColor(Terminal.Color.DEFAULT);
+      t.applyForegroundColor(Terminal.Color.DEFAULT);
+    }
+
     public static void main(String[] args) {
 
       int x = 2;
@@ -184,9 +196,9 @@ public class TenTen {
       TenTen a = new TenTen();
       //spawn new pieces, print the 3
       Piece[] selection = a.spawnPieces();
-      putString(0,14,terminal,selection[0].toString());
-      putString(0,20,terminal,selection[1].toString());
-      putString(0,26,terminal,selection[2].toString());
+      putString(0,14,terminal,selection[0].toString(), Terminal.Color.YELLOW);
+      putString(0,20,terminal,selection[1].toString(), Terminal.Color.YELLOW);
+      putString(0,26,terminal,selection[2].toString(), Terminal.Color.YELLOW);
 
       //indicates whether pieces 1 2 or 3 have been placed on the board or are still waiting
       boolean pieceOneUsed = false;
@@ -285,9 +297,9 @@ public class TenTen {
         //if all 3 pieces have been used, generate 3 new ones and print them
         if (a.piecesWaiting() == 0) {
           selection = a.spawnPieces();
-          putString(0,14,terminal,selection[0].toString());
-          putString(0,20,terminal,selection[1].toString());
-          putString(0,26,terminal,selection[2].toString());
+          putString(0,14,terminal,selection[0].toString(), Terminal.Color.YELLOW);
+          putString(0,20,terminal,selection[1].toString(), Terminal.Color.YELLOW);
+          putString(0,26,terminal,selection[2].toString(), Terminal.Color.YELLOW);
           pieceOneUsed = false;
           pieceTwoUsed = false;
           pieceThreeUsed = false;
