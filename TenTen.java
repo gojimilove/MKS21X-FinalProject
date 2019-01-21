@@ -181,6 +181,10 @@ public class TenTen {
       boolean running = true;
 
       TenTen a = new TenTen();
+      Piece[] selection = a.spawnPieces();
+      putString(0,22,terminal,selection[0].toString());
+      putString(0,26,terminal,selection[1].toString());
+      putString(0,30,terminal,selection[2].toString());
 
       while(running){
         //set up cursor
@@ -194,10 +198,13 @@ public class TenTen {
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
         //terminal.applySGR(Terminal.SGR.RESET_ALL);
         putString(0, 40, terminal, ""+a.piecesWaiting());
-        Piece[] selection = a.spawnPieces();
-        putString(0,22,terminal,selection[0].toString());
-        putString(0,26,terminal,selection[1].toString());
-        putString(0,30,terminal,selection[2].toString());
+        if (a.piecesWaiting() == 0) {
+          selection = a.spawnPieces();
+          putString(0,22,terminal,selection[0].toString());
+          putString(0,26,terminal,selection[1].toString());
+          putString(0,30,terminal,selection[2].toString());
+        }
+        
         
 
         Key key = terminal.readInput();
