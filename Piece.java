@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Piece {
-	private int id,length,width;
+	private int id,length,width,points;
   private Tile[][] piece;
 
   // public Piece() {
@@ -20,46 +20,67 @@ public class Piece {
   	if (id == 1) {
   		length = 1;
   		width = 1;
+  		points = 1;
   	}
   	if (id == 2) {
   		length = 1;
   		width = 2;
+  		points = 2;
   	}
   	if (id == 3) {
   		length = 2;
   		width = 1;
+  		points = 2;
   	}
-  	if (id > 3 && id < 9) {
+  	if (id > 3 && id < 8) {
   		length = 2;
   		width = 2;
+  		points = 3;
+  	}
+  	if (id == 8) {
+  		length = 2;
+  		width = 2;
+  		points = 4;
   	}
   	if (id == 9) {
   		length = 1;
   		width = 3;
+  		points = 3;
   	}
   	if (id == 10) {
   		length = 3;
   		width = 1;
+  		points = 3;
   	}
-  	if (id > 10 && id < 16) {
+  	if (id == 11) {
   		length = 3;
   		width = 3;
+  		points = 9;
+  	}
+  	if (id > 11 && id < 16) {
+  		length = 3;
+  		width = 3;
+  		points = 5;
   	}
   	if (id == 16) {
   		length = 1;
   		width = 4;
+  		points = 4;
   	}
   	if (id == 17) {
   		length = 4;
   		width = 1;
+  		points = 4;
   	}
   	if (id == 18) {
   		length = 1;
   		width = 5;
+  		points = 5;
   	}
   	if (id == 19) {
   		length = 5;
   		width = 1;
+  		points = 5;
   	}
 
   	piece = new Tile[length][width];
@@ -131,46 +152,67 @@ public class Piece {
   	if (id == 1) {
   		length = 1;
   		width = 1;
+  		points = 1;
   	}
   	if (id == 2) {
   		length = 1;
   		width = 2;
+  		points = 2;
   	}
   	if (id == 3) {
   		length = 2;
   		width = 1;
+  		points = 2;
   	}
-  	if (id > 3 && id < 9) {
+  	if (id > 3 && id < 8) {
   		length = 2;
   		width = 2;
+  		points = 3;
+  	}
+  	if (id == 8) {
+  		length = 2;
+  		width = 2;
+  		points = 4;
   	}
   	if (id == 9) {
   		length = 1;
   		width = 3;
+  		points = 3;
   	}
   	if (id == 10) {
   		length = 3;
   		width = 1;
+  		points = 3;
   	}
-  	if (id > 10 && id < 16) {
+  	if (id == 11) {
   		length = 3;
   		width = 3;
+  		points = 9;
+  	}
+  	if (id > 11 && id < 16) {
+  		length = 3;
+  		width = 3;
+  		points = 5;
   	}
   	if (id == 16) {
   		length = 1;
   		width = 4;
+  		points = 4;
   	}
   	if (id == 17) {
   		length = 4;
   		width = 1;
+  		points = 4;
   	}
   	if (id == 18) {
   		length = 1;
   		width = 5;
+  		points = 5;
   	}
   	if (id == 19) {
   		length = 5;
   		width = 1;
+  		points = 5;
   	}
 
   	piece = new Tile[length][width];
@@ -275,6 +317,10 @@ public class Piece {
     return id;
   }
 
+  public int score() {
+  	return points;
+  }
+
   public String toString() {
     String s = "";
     for (int i = 0; i < piece.length; i++) {
@@ -288,6 +334,7 @@ public class Piece {
   }
 
   public static void main(String[] args) {
+    /*
     Piece test1 = new Piece(1);
     Piece test2 = new Piece(2);
     Piece test3 = new Piece(3);
@@ -307,7 +354,7 @@ public class Piece {
     Piece test17 = new Piece(17);
     Piece test18 = new Piece(18);
     Piece test19 = new Piece(19);
-    //System.out.println(test.id());
+    
     System.out.println(test1+"\n");
     System.out.println(test2+"\n");
     System.out.println(test3+"\n");
@@ -327,5 +374,10 @@ public class Piece {
     System.out.println(test17+"\n");
     System.out.println(test18+"\n");
     System.out.println(test19+"\n");
+    */
+    Piece test = new Piece();
+    System.out.println(test.id());
+    System.out.println(test.score());
+    System.out.println(test);
   }
 }
