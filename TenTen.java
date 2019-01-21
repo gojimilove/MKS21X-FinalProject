@@ -58,10 +58,10 @@ public class TenTen {
     //tests if the piece "fits" in a specific spot, whether it overlaps anything
     private boolean pieceFits(Piece x, int row, int col) {
       //if the piece goes out of bounds return false
-      if (row+x.length() > board.length || col+x.length() > board[0].length) return false;
+      if (row+x.length() > board.length || col+x.width() > board[0].length) return false;
       //if a space on board where we're trying to put the piece is already filled, return false
       for (int i=0; i < x.length();i++){
-        for(int j=0; j < x.length();j++){
+        for(int j=0; j < x.width();j++){
           if (board[row+i][col+j].isFilled()) return false;
         }
       }
@@ -119,12 +119,12 @@ public class TenTen {
       //if the piece fits fill in the tiles on the board where piece would go
       if (pieceFits(x, row, col)) {
         for (int i=0; i < x.length();i++){
-          for(int j=0; j < x.length();j++){
+          for(int j=0; j < x.width();j++){
             board[row+i][col+j].fillTile();
           }
         }
       }
-      score+=(x.length()*x.length());
+      score+=x.score();
       count--;
     }
 
@@ -183,8 +183,8 @@ public class TenTen {
       TenTen a = new TenTen();
       Piece[] selection = a.spawnPieces();
       putString(0,22,terminal,selection[0].toString());
-      putString(0,26,terminal,selection[1].toString());
-      putString(0,30,terminal,selection[2].toString());
+      putString(0,28,terminal,selection[1].toString());
+      putString(0,34,terminal,selection[2].toString());
 
       boolean pieceOneUsed = false;
       boolean pieceTwoUsed = false;
@@ -201,12 +201,12 @@ public class TenTen {
         //terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
         //terminal.applySGR(Terminal.SGR.RESET_ALL);
-        putString(0, 40, terminal, ""+a.piecesWaiting());
+        //putString(0, 40, terminal, ""+a.piecesWaiting());
         if (a.piecesWaiting() == 0) {
           selection = a.spawnPieces();
           putString(0,22,terminal,selection[0].toString());
-          putString(0,26,terminal,selection[1].toString());
-          putString(0,30,terminal,selection[2].toString());
+          putString(0,28,terminal,selection[1].toString());
+          putString(0,34,terminal,selection[2].toString());
           pieceOneUsed = false;
           pieceTwoUsed = false;
           pieceThreeUsed = false;
@@ -258,7 +258,7 @@ public class TenTen {
           if (key.getCharacter() == '1') {
             if (pieceOneUsed == false && a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
               a.addPiece(selection[0], y-9, ((x/2) - 1));
-              putString(0,22,terminal,"     \n     \n     ");
+              putString(0,22,terminal,"     \n     \n     \n     \n     ");
               pieceOneUsed = true;
             }
           }
@@ -266,7 +266,7 @@ public class TenTen {
           if (key.getCharacter() == '2') {
             if (pieceTwoUsed == false && a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
               a.addPiece(selection[1], y-9, ((x/2) - 1));
-              putString(0,26,terminal,"     \n     \n     ");
+              putString(0,28,terminal,"     \n     \n     \n     \n     ");
               pieceTwoUsed = true;
             }
           }
@@ -274,7 +274,7 @@ public class TenTen {
           if (key.getCharacter() == '3') {
             if (pieceThreeUsed == false && a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
               a.addPiece(selection[2], y-9, ((x/2) - 1));
-              putString(0,30,terminal,"     \n     \n     ");
+              putString(0,34,terminal,"     \n     \n     \n     \n     ");
               pieceThreeUsed = true;
             }
           }
@@ -297,7 +297,7 @@ public class TenTen {
         putString(0,9,terminal,a.toString());
         putString(0,20,terminal,"Pieces:");
         
-        putString(0,34,terminal,"Score: "+a.getScore());
+        putString(0,40,terminal,"Score: "+a.getScore());
         
       }
     }
