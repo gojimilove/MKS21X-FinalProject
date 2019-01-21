@@ -186,6 +186,10 @@ public class TenTen {
       putString(0,26,terminal,selection[1].toString());
       putString(0,30,terminal,selection[2].toString());
 
+      boolean pieceOneUsed = false;
+      boolean pieceTwoUsed = false;
+      boolean pieceThreeUsed = false;
+
       while(running){
         //set up cursor
         terminal.moveCursor(x,y);
@@ -203,6 +207,9 @@ public class TenTen {
           putString(0,22,terminal,selection[0].toString());
           putString(0,26,terminal,selection[1].toString());
           putString(0,30,terminal,selection[2].toString());
+          pieceOneUsed = false;
+          pieceTwoUsed = false;
+          pieceThreeUsed = false;
         }
         
         
@@ -249,23 +256,26 @@ public class TenTen {
           }
           //selecting pieces to put on the board
           if (key.getCharacter() == '1') {
-            if (a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
+            if (pieceOneUsed == false && a.pieceFits(selection[0], y-9, ((x/2) - 1))) {
               a.addPiece(selection[0], y-9, ((x/2) - 1));
               putString(0,22,terminal,"     \n     \n     ");
+              pieceOneUsed = true;
             }
           }
 
           if (key.getCharacter() == '2') {
-            if (a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
+            if (pieceTwoUsed == false && a.pieceFits(selection[1], y-9, ((x/2) - 1))) {
               a.addPiece(selection[1], y-9, ((x/2) - 1));
               putString(0,26,terminal,"     \n     \n     ");
+              pieceTwoUsed = true;
             }
           }
 
           if (key.getCharacter() == '3') {
-            if (a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
+            if (pieceThreeUsed == false && a.pieceFits(selection[2], y-9, ((x/2) - 1))) {
               a.addPiece(selection[2], y-9, ((x/2) - 1));
               putString(0,30,terminal,"     \n     \n     ");
+              pieceThreeUsed = true;
             }
           }
 
