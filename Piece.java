@@ -3,6 +3,7 @@ import java.util.Random;
 public class Piece {
 	private int id,length,width,points;
   private Tile[][] piece;
+  private int[][] coordinates;
 
   //generates a piece, 2D array of Tiles (rectangle) that are filled or unfilled
   //there are 19 different pieces, each with different length, width, and number of blocks
@@ -14,66 +15,115 @@ public class Piece {
   		length = 1;
   		width = 1;
   		points = 1;
+  		coordinates = new int[][] {{0,0}};
   	}
   	if (id == 2) {
   		length = 1;
   		width = 2;
   		points = 2;
+  		coordinates = new int[][] {{0,0},{0,1}};
   	}
   	if (id == 3) {
   		length = 2;
   		width = 1;
   		points = 2;
+  		coordinates = new int[][] {{0,0},{1,0}};
   	}
-  	if (id > 3 && id < 8) {
+  	if (id == 4) {
   		length = 2;
   		width = 2;
   		points = 3;
+  		coordinates = new int[][] {{0,0},{1,0},{1,1}};
+  	}
+  	if (id == 5) {
+  		length = 2;
+  		width = 2;
+  		points = 3;
+  		coordinates = new int[][] {{0,1},{1,0},{1,1}};
+  	}
+  	if (id == 6) {
+  		length = 2;
+  		width = 2;
+  		points = 3;
+  		coordinates = new int[][] {{0,0},{0,1},{1,0}};
+  	}
+  	if (id == 7) {
+  		length = 2;
+  		width = 2;
+  		points = 3;
+  		coordinates = new int[][] {{0,0},{0,1},{1,1}};
   	}
   	if (id == 8) {
   		length = 2;
   		width = 2;
   		points = 4;
+  		coordinates = new int[][] {{0,0},{0,1},{1,0},{1,1}};
   	}
   	if (id == 9) {
   		length = 1;
   		width = 3;
   		points = 3;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2}};
   	}
   	if (id == 10) {
   		length = 3;
   		width = 1;
   		points = 3;
+  		coordinates = new int[][] {{0,0},{1,0},{2,0}};
   	}
   	if (id == 11) {
   		length = 3;
   		width = 3;
   		points = 9;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2},{1,0},{1,1},{1,2},{2,0},{2,1},{2,2}};
   	}
-  	if (id > 11 && id < 16) {
+  	if (id == 12) {
   		length = 3;
   		width = 3;
   		points = 5;
+  		coordinates = new int[][] {{0,0},{1,0},{2,0},{2,1},{2,2}};
+  	}
+  	if (id == 13) {
+  		length = 3;
+  		width = 3;
+  		points = 5;
+  		coordinates = new int[][] {{0,2},{1,2},{2,0},{2,1},{2,2}};
+  	}
+  	if (id == 14) {
+  		length = 3;
+  		width = 3;
+  		points = 5;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2},{1,0},{2,0}};
+  	}
+  	if (id == 15) {
+  		length = 3;
+  		width = 3;
+  		points = 5;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2},{1,2},{2,2}};
   	}
   	if (id == 16) {
   		length = 1;
   		width = 4;
   		points = 4;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2},{0,3}};
   	}
   	if (id == 17) {
   		length = 4;
   		width = 1;
   		points = 4;
+  		coordinates = new int[][] {{0,0},{1,0},{2,0},{3,0}};
   	}
   	if (id == 18) {
   		length = 1;
   		width = 5;
   		points = 5;
+  		coordinates = new int[][] {{0,0},{0,1},{0,2},{0,3},{0,4}};
   	}
   	if (id == 19) {
   		length = 5;
   		width = 1;
   		points = 5;
+  		coordinates = new int[][] {{0,0},{1,0},{2,0},{3,0},{4,0}};
   	}
 
   	piece = new Tile[length][width];
@@ -295,6 +345,14 @@ public class Piece {
   //returns the number of blocks each piece takes up (number of filled tiles), or the number of points it would recieve for being placed
   public int score() {
   	return points;
+  }
+
+  public int xCoord(int coord) {
+  	return coordinates[coord][0];
+  }
+
+  public int yCoord(int coord) {
+  	return coordinates[coord][1];
   }
 
   public String toString() {
