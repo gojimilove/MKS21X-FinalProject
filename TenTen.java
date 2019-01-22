@@ -300,9 +300,11 @@ public class TenTen {
             }
           }
           if (key.getCharacter() == 'F') {
-            terminal.clearScreen();
-            mode = 0;
-            running = true;
+            terminal.exitPrivateMode();
+            running = false;
+            // terminal.clearScreen();
+            // mode = 0;
+            // running = true;
           }
         }
 
@@ -390,7 +392,7 @@ public class TenTen {
           //if just 3 is waiting AND it doesnt fit
           if (!pieceThreeUsed && !a.pieceFitsBoard(selection[2]) &&
               pieceOneUsed &&
-              pieceThreeUsed) {
+              pieceTwoUsed) {
             playerLost = true;
             //putString(0,45,terminal,"NONE OF THE PIECES FIT");
           }
@@ -398,12 +400,14 @@ public class TenTen {
           if (playerLost) mode = 1;
         }
         else {
-          terminal.applySGR(Terminal.SGR.ENTER_BOLD,Terminal.SGR.ENTER_BLINK);
-          putString(1,3,terminal, "YOU LOST press F to reset the game");
-          terminal.applySGR(Terminal.SGR.RESET_ALL);
-          //terminal.exitPrivateMode();
           //running = false;
-          //System.out.println("u lost");
+          terminal.clearScreen();
+          //terminal.applySGR(Terminal.SGR.ENTER_BOLD,Terminal.SGR.ENTER_BLINK);
+          //putString(1,3,terminal, "YOU LOST press F to reset the game");
+          //terminal.applySGR(Terminal.SGR.RESET_ALL);
+          terminal.exitPrivateMode();
+          running = false;
+          System.out.println("\nYou lost!! None of the remaining pieces could fit on the board. Better luck next time! \nYour score was "+a.getScore()+"\n");
         }
       }
     }
