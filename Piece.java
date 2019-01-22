@@ -1,7 +1,8 @@
 import java.util.Random;
 
 public class Piece {
-	//to determine the piece's shape, and each piece is worth different points
+
+	//to determine the piece's shape, and each piece is worth different points, given id for different piece 
 	private int id,length,width,points;
 
 	//each piece is an array of tiles
@@ -360,6 +361,7 @@ public class Piece {
   	return points;
   }
 
+	//to return coordinates of each block in the piece
   public int xCoord(int coord) {
   	return coordinates[coord][0];
   }
@@ -368,6 +370,7 @@ public class Piece {
   	return coordinates[coord][1];
   }
 
+	//used for players to see what they're given, returns the piece to be printed
   public String toString() {
     String s = "";
     for (int i = 0; i < piece.length; i++) {
