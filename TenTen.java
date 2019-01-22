@@ -78,7 +78,7 @@ public class TenTen {
       return false;
     }
 
-    //clearing a row when entirely filled
+    //clearing a row when entirely filled, grants the player score
     private void clearRow(int row) {
 			for (int i = 0; i < board[row].length; i++) {
         board[row][i].clearTile();
@@ -86,7 +86,7 @@ public class TenTen {
       score+=10;
     }
 
-    //clearing a column when entirely filled
+    //clearing a column when entirely filled, grants the player score
     private void clearColumn(int col) {
       for (int i = 0; i < board.length; i++){
         board[i][col].clearTile();
@@ -123,6 +123,8 @@ public class TenTen {
           }
         }
       }
+
+      //placing a piece onto the board grants score
       score+=x.score();
       count--;
     }
@@ -140,13 +142,14 @@ public class TenTen {
     //resets the score
     private void clearPoints() {
     	score = 0;
-    }    
+    }
 
     //number of pieces player can select that are not on the board
     private int piecesWaiting(){
       return count;
     }
 
+    //prints the board, empty tiles and filled tiles, which are actually representing the pieces placed
     public String toString() {
       String s = "";
       for (int i = 0; i < board.length; i++) {
@@ -168,6 +171,7 @@ public class TenTen {
       }
     }
 
+    //places the piece onto the board
     public static void putPiece(int r, int c,Terminal t, Piece piece, Terminal.Color back ){
       t.moveCursor(r,c);
       t.applyBackgroundColor(back);
@@ -181,15 +185,6 @@ public class TenTen {
       t.applyBackgroundColor(Terminal.Color.DEFAULT);
       t.applyForegroundColor(Terminal.Color.DEFAULT);
     }
-
-
-
-
-
-
-
-
-
 
     public static void main(String[] args) {
 
@@ -207,7 +202,7 @@ public class TenTen {
 
       TenTen a = new TenTen();
       //putString(0,1,terminal,a.toString());
-      //spawn new pieces, print the 3
+      //spawn new pieces, prints the three for player to see and select from
       Piece[] selection = a.spawnPieces();
       putPiece(1,14,terminal,selection[0],Terminal.Color.YELLOW);
       putPiece(1,20,terminal,selection[1],Terminal.Color.YELLOW);
@@ -228,17 +223,19 @@ public class TenTen {
         //terminal.putCharacter(' ');
         //terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-        //terminal.applySGR(Terminal.SGR.RESET_ALL);        
+        //terminal.applySGR(Terminal.SGR.RESET_ALL);
 
         Key key = terminal.readInput();
 
         if (key != null){
           if (mode == 0) {
+
             //exiting the game
             if (key.getKind() == Key.Kind.Escape) {
               terminal.exitPrivateMode();
               running = false;
             }
+
             //moving cursor around
             if (key.getKind() == Key.Kind.ArrowLeft) {
               if (x != 2) {
@@ -271,6 +268,7 @@ public class TenTen {
                 y++;
               }
             }
+
             //selecting pieces to put on the board
             if (key.getCharacter() == '1') {
               if (pieceOneUsed == false && a.pieceFits(selection[0], y-1, ((x/2) - 1))) {
@@ -309,6 +307,7 @@ public class TenTen {
         }
 
         if (mode == 0) {
+
           //checks to see if any rows and/or columns are filled, clears them and adds points if they are
           for (int i = 0; i < 10; i++) {
             if (a.rowFilled(i)) {
@@ -342,8 +341,8 @@ public class TenTen {
 
           //cases that would trigger "endgame", basically, none of the available pieces fit on the board
           //if all 3 are waiting AND they all dont fit
-          if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) && 
-              !pieceTwoUsed && !a.pieceFitsBoard(selection[1]) && 
+          if (!pieceOneUsed && !a.pieceFitsBoard(selection[0]) &&
+              !pieceTwoUsed && !a.pieceFitsBoard(selection[1]) &&
               !pieceThreeUsed && !a.pieceFitsBoard(selection[2])) {
             playerLost = true;
             //putString(0,45,terminal,"NONE OF THE PIECES FIT");
