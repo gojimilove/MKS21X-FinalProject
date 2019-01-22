@@ -15,13 +15,13 @@ Instructions:
   
   Note! A shape is selected from it's upper left hand corner. All of the shapes have a box around them that mark the boundaries of that shape, and selecting it will always grab the upper left hand corner of that box.
   For example, if you are trying to place a shape that looks like this:
-      -
-      -
-  - - -
+      X
+      X
+  X X X
   Your cursor will be here:
-  0   -
-      -
-  - - -
+  0   X
+      X
+  X X X
   
 APCS FINAL PROJECT DEVLOG
 
