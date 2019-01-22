@@ -12,7 +12,7 @@ Instructions:
 3. To use:
 	Use the arrow keys to move a cursor around the board. You cannot move outside of the board.
 	There are going to be three shapes generated below the board in yellow that are available for you to place. To place a shape, hit 1, 2, or 3 to place one of the three shapes onto the board. If the shape goes off the board, or overlaps with another shape already on the board, you will not be able to place that shape and will have to move the cursor to a different place and try again.
-  Repeat this process indefinitely. 
+  Repeat this process indefinitely until you lose. When you lose, and want to play again, press the escape key and rerun with step 2.
   
   Note! A shape is selected from it's upper left hand corner. All of the shapes have a box around them that mark the boundaries of that shape, and selecting it will always grab the upper left hand corner of that box.
   
