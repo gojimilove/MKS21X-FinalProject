@@ -105,7 +105,7 @@ public class Piece {
   		length = 1;
   		width = 4;
   		points = 4;
-  		coordinates = new int[][] {{0,0},{0,1},{0,2},{0,3}};
+  		coordinates = new int[][] {{0,0},{0,2},{0,4},{0,6}};
   	}
   	if (id == 17) {
   		length = 4;
