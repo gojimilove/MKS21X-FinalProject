@@ -210,8 +210,8 @@ public class TenTen {
       //spawn new pieces, print the 3
       Piece[] selection = a.spawnPieces();
       putPiece(1,14,terminal,selection[0],Terminal.Color.YELLOW);
-      putPiece(1,20,terminal,selection[1],Terminal.Color.YELLOW);
-      putPiece(1,26,terminal,selection[2],Terminal.Color.YELLOW);
+      putPiece(12,14,terminal,selection[1],Terminal.Color.YELLOW);
+      putPiece(23,14,terminal,selection[2],Terminal.Color.YELLOW);
 
       //indicates whether pieces 1 2 or 3 have been placed on the board or are still waiting
       boolean pieceOneUsed = false;
@@ -276,7 +276,11 @@ public class TenTen {
               if (pieceOneUsed == false && a.pieceFits(selection[0], y-1, ((x/2) - 1))) {
                 a.addPiece(selection[0], y-1, ((x/2) - 1));
                 //putPiece(x,y,terminal,selection[0],Terminal.Color.YELLOW);
-                putString(0,14,terminal,"          \n          \n          \n          \n          ");
+                putString(1,14,terminal,"          ");
+                putString(1,15,terminal,"          ");
+                putString(1,16,terminal,"          ");
+                putString(1,17,terminal,"          ");
+                putString(1,18,terminal,"          ");
                 pieceOneUsed = true;
               }
             }
@@ -285,7 +289,11 @@ public class TenTen {
               if (pieceTwoUsed == false && a.pieceFits(selection[1], y-1, ((x/2) - 1))) {
                 a.addPiece(selection[1], y-1, ((x/2) - 1));
                 //putPiece(x,y,terminal,selection[1],Terminal.Color.YELLOW);
-                putString(0,20,terminal,"          \n          \n          \n          \n          ");
+                putString(12,14,terminal,"          ");
+                putString(12,15,terminal,"          ");
+                putString(12,16,terminal,"          ");
+                putString(12,17,terminal,"          ");
+                putString(12,18,terminal,"          ");
                 pieceTwoUsed = true;
               }
             }
@@ -294,7 +302,11 @@ public class TenTen {
               if (pieceThreeUsed == false && a.pieceFits(selection[2], y-1, ((x/2) - 1))) {
                 a.addPiece(selection[2], y-1, ((x/2) - 1));
                 //putPiece(x,y,terminal,selection[2],Terminal.Color.YELLOW);
-                putString(0,26,terminal,"          \n          \n          \n          \n          ");
+                putString(23,14,terminal,"          ");
+                putString(23,15,terminal,"          ");
+                putString(23,16,terminal,"          ");
+                putString(23,17,terminal,"          ");
+                putString(23,18,terminal,"          ");
                 pieceThreeUsed = true;
               }
             }
@@ -324,8 +336,8 @@ public class TenTen {
           if (a.piecesWaiting() == 0) {
             selection = a.spawnPieces();
             putPiece(1,14,terminal,selection[0],Terminal.Color.YELLOW);
-            putPiece(1,20,terminal,selection[1],Terminal.Color.YELLOW);
-            putPiece(1,26,terminal,selection[2],Terminal.Color.YELLOW);
+            putPiece(12,14,terminal,selection[1],Terminal.Color.YELLOW);
+            putPiece(23,14,terminal,selection[2],Terminal.Color.YELLOW);
             pieceOneUsed = false;
             pieceTwoUsed = false;
             pieceThreeUsed = false;
@@ -337,8 +349,8 @@ public class TenTen {
           //putString(0,7,terminal,"Current position: ["+x+","+y+"]     ");
           //putString(0,8,terminal,"Current position on board: ["+(x/2 - 1)+","+(y-1)+"]     ");
           putString(0,12,terminal,"PIECES:");
-          putString(0,32,terminal,"SCORE: "+a.getScore());
-          putString(0,34,terminal,"INSTRUCTIONS:\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece. Then, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. YOU LOSE IF there is no more room on the board for any of the pieces displayed below. GOOD LUCK!!\n\n***Note: a piece is selected from its top left corner.");
+          putString(0,20,terminal,"SCORE: "+a.getScore());
+          putString(0,22,terminal,"INSTRUCTIONS:\nTo place a piece, move the cursor with the arrow keys to where you would like to place the piece. Then, click either 1, 2, or 3 to select one of the pieces shown below the board, and if it fits where you tried to place it, it will be placed on the board. You earn points by placing and clearing pieces; when you place a piece, you get the same amount of points as the number of tiles that block takes up. You also recieve 10 points for each row or column you clear. YOU LOSE IF there is no more room on the board for any of the pieces displayed below. GOOD LUCK!!\n\n***Note: a piece is selected from its top left corner.");
 
           //cases that would trigger "endgame", basically, none of the available pieces fit on the board
           //if all 3 are waiting AND they all dont fit
