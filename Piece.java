@@ -1,13 +1,21 @@
 import java.util.Random;
 
 public class Piece {
+	//to determine the piece's shape, and each piece is worth different points
 	private int id,length,width,points;
+
+	//each piece is an array of tiles
   private Tile[][] piece;
+
+	//to store coordinates of the characters that each piece fills out
   private int[][] coordinates;
 
   //generates a piece, 2D array of Tiles (rectangle) that are filled or unfilled
   //there are 19 different pieces, each with different length, width, and number of blocks
   public Piece() {
+
+		//to generate a random number to associate with a piece so that pieces
+		//are spawned randomly
   	Random rand = new Random();
   	int randomID = rand.nextInt(19) + 1;
   	id = randomID;
@@ -126,6 +134,7 @@ public class Piece {
   		coordinates = new int[][] {{0,0},{1,0},{2,0},{3,0},{4,0}};
   	}
 
+		//to initialize the tiles array used in piece
   	piece = new Tile[length][width];
     for (int i = 0; i < piece.length; i++) {
       for (int j = 0; j < piece[i].length; j++) {
@@ -133,6 +142,7 @@ public class Piece {
       }
     }
 
+		//to fill out each tile of the piece manually
     if (id == 4) {
     	piece[0][0].fillTile();
     	piece[1][0].fillTile();
@@ -181,6 +191,8 @@ public class Piece {
     	piece[1][2].fillTile();
     	piece[2][2].fillTile();
     }
+
+		//if the piece is 1x1, 2x2, or 3x3, use this method to fill
     else {
     	for (int i = 0; i < piece.length; i++) {
       	for (int j = 0; j < piece[i].length; j++) {
@@ -190,6 +202,7 @@ public class Piece {
     }
   }
 
+	//same constructor, but used to construct a certain piece, given x as the id
    public Piece(int x) {
   	id = x;
   	if (id == 1) {
@@ -388,7 +401,7 @@ public class Piece {
     Piece test17 = new Piece(17);
     Piece test18 = new Piece(18);
     Piece test19 = new Piece(19);
-    
+
     System.out.println(test1+"\n");
     System.out.println(test2+"\n");
     System.out.println(test3+"\n");
