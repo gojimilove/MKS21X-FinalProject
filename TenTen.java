@@ -173,8 +173,8 @@ public class TenTen {
       t.applyBackgroundColor(back);
       t.applyForegroundColor(Terminal.Color.BLACK);
       for(int i = 0; i < piece.score();i++){
-        //t.moveCursor((piece.yCoord(i)/2) + r,piece.xCoord(i) + c);
-        //t.putCharacter(' ');
+        t.moveCursor((piece.yCoord(i)+1) + r,piece.xCoord(i) + c);
+        t.putCharacter(' ');
         t.moveCursor(piece.yCoord(i) + r,piece.xCoord(i) + c);
         t.putCharacter('-');
       }
