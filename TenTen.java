@@ -209,9 +209,9 @@ public class TenTen {
       //putString(0,1,terminal,a.toString());
       //spawn new pieces, print the 3
       Piece[] selection = a.spawnPieces();
-      putPiece(0,14,terminal,selection[0],Terminal.Color.YELLOW);
-      putPiece(0,20,terminal,selection[1],Terminal.Color.YELLOW);
-      putPiece(0,26,terminal,selection[2],Terminal.Color.YELLOW);
+      putPiece(1,14,terminal,selection[0],Terminal.Color.YELLOW);
+      putPiece(1,20,terminal,selection[1],Terminal.Color.YELLOW);
+      putPiece(1,26,terminal,selection[2],Terminal.Color.YELLOW);
 
       //indicates whether pieces 1 2 or 3 have been placed on the board or are still waiting
       boolean pieceOneUsed = false;
@@ -323,9 +323,9 @@ public class TenTen {
           //if all 3 pieces have been used, generate 3 new ones and print them
           if (a.piecesWaiting() == 0) {
             selection = a.spawnPieces();
-            putPiece(0,14,terminal,selection[0],Terminal.Color.YELLOW);
-            putPiece(0,20,terminal,selection[1],Terminal.Color.YELLOW);
-            putPiece(0,26,terminal,selection[2],Terminal.Color.YELLOW);
+            putPiece(1,14,terminal,selection[0],Terminal.Color.YELLOW);
+            putPiece(1,20,terminal,selection[1],Terminal.Color.YELLOW);
+            putPiece(1,26,terminal,selection[2],Terminal.Color.YELLOW);
             pieceOneUsed = false;
             pieceTwoUsed = false;
             pieceThreeUsed = false;
