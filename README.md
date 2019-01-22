@@ -52,3 +52,6 @@ Today we tried to get the pieces to have color but that didn’t work out again,
 
 1/20/19
 Made it so 1 2 and 3 correspond to the pieces that are printed on the board rather than just a 1x1, 2x2, or 3x3 piece.
+
+1/21/19
+Today, we made the pieces disappear from the waiting area when they are put on the board, and made it so you can't use the same piece more than once. We also made a lot of changes to piece itself- we now have 19 different pieces instead of 3! Also, each piece also has an array of coordinates that it occupies, which was useful for adding color to the board. However, we weren't able to figure out coloring the board when pieces were placed, only the pieces that are waiting. Currently, the board is filled with '-' to indicate a block is empty and 'F' to indicate a block is filled. We also worked on an endgame, so when none of the available pieces fit on the board, the terminal is cleared, the game ends, and the player gets a message telling them that they lost, as well as how many points they ended up with.
