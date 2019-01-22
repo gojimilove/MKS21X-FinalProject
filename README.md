@@ -5,10 +5,11 @@ Welcome to 1010!
 
 
 Instructions: 
-1. Compiling and Running
+1. Compiling:
   $ javac -cp lanterna.jar:. TenTen.java
+2. Running:
   $ java -cp lanterna.jar:. TenTen
-2. To use:
+3. To use:
 	Use the arrow keys to move a cursor around the board. You cannot move outside of the board.
 	There are going to be three shapes generated below the board in yellow that are available for you to place. To place a shape, hit 1, 2, or 3 to place one of the three shapes onto the board. If the shape goes off the board, or overlaps with another shape already on the board, you will not be able to place that shape and will have to move the cursor to a different place and try again.
   Repeat this process indefinitely. 
