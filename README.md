@@ -1,8 +1,7 @@
 # TenTen
 
 Welcome to 1010!
-1010 is a game where there is a 10x10 board of empty tiles that the player has to fill in. The player is given 3 randomly generated shapes
-that they have to place onto the board. Once the player places all 3 shapes, another 3 will be given to the player, and this continues until the player loses. The goal of the game is to fill up each row and column on the board. Once a row or column is filled, that row or column wil clear and grant the player score. There is no score limit, the player will try to achieve the highest score they can. The player will lose if they cannot place another shape onto the board with the shapes they have left. 
+1010 is a game where there is a 10x10 board of empty tiles that the player has to fill in. The player is given 3 randomly generated shapes that they have to place onto the board. Once the player places all 3 shapes, another 3 will be given to the player, and this continues until the player loses. The goal of the game is to fill up each row and column on the board. Once a row or column is filled, that row or column wil clear and grant the player score. There is no score limit, the player will try to achieve the highest score they can. The player will lose if they cannot place another shape onto the board with the shapes they have left. 
 
 
 Instructions: 
@@ -10,10 +9,19 @@ Instructions:
   $ javac -cp lanterna.jar:. TenTen.java
   $ java -cp lanterna.jar:. TenTen
 2. To use:
-  To select a shape, hit 1, 2, or 3 to toggle between the 3 you're given and hit enter to confirm. 
-  This will bring you onto the board with a cursor that you can move around to place the shape you selected. 
-  Hit enter to place the shape.
+	Use the arrow keys to move a cursor around the board. You cannot move outside of the board.
+	There are going to be three shapes generated below the board in yellow that are available for you to place. To place a shape, hit 1, 2, or 3 to place one of the three shapes onto the board. If the shape goes off the board, or overlaps with another shape already on the board, you will not be able to place that shape and will have to move the cursor to a different place and try again.
   Repeat this process indefinitely. 
+  
+  Note! A shape is selected from it's upper left hand corner. All of the shapes have a box around them that mark the boundaries of that shape, and selecting it will always grab the upper left hand corner of that box.
+  For example, if you are trying to place a shape that looks like this:
+      -
+      -
+  - - -
+  Your cursor will be here:
+  0   -
+      -
+  - - -
   
 APCS FINAL PROJECT DEVLOG
 
